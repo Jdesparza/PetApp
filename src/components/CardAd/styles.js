@@ -5,13 +5,13 @@ const { width, height } = Dimensions.get('window')
 
 const styles = StyleSheet.create({
     main: {
-        flex: 1,
+        // flex: 1,
         backgroundColor: COLOR_PRIMARY,
         marginHorizontal: 10,
-        paddingVertical: 20,
+        paddingVertical: 15,
         paddingHorizontal: 20,
         borderRadius: 30,
-        height: 175,
+        height: 170,
     },
     titleCard: {
         fontSize: 19,

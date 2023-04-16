@@ -5,7 +5,7 @@ import styles from './styles'
 const CardAd = () => {
     return (
         <View style={styles.main}>
-            <View style={{ justifyContent: 'space-between', flex: 1, zIndex: 1 }}>
+            <View style={{ justifyContent: 'space-between', width: '100%', height: '100%', zIndex: 1 }}>
                 <Text style={styles.titleCard}>Join our Pet Lover {'\n'}Community</Text>
                 <TouchableOpacity style={styles.btnCard} onPress={() => console.log('Join')}>
                     <Text style={styles.btnTextCard}>Join now</Text>

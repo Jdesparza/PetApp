@@ -87,7 +87,7 @@ const Welcome = ({ toggleDarkMode }) => {
                         <Text style={{ color: COLOR_PRIMARY, fontWeight: 'bold' }}> Pets & humans</Text>
                     </Text>
                 </View>
-                <TouchableOpacity style={styles.btnStart} onPress={() => navigation.navigate('Home')}>
+                <TouchableOpacity style={styles.btnStart} onPress={() => navigation.navigate('HomeBottomTabNavigator')}>
                     <Feather name='chevron-right' size={30} style={styles.iconBtnStart} />
                     <Text style={styles.titleBtnStart}>Get Started</Text>
                 </TouchableOpacity>

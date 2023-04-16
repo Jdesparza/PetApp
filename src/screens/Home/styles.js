@@ -17,21 +17,21 @@ const styles = StyleSheet.create({
     },
     main: {
         flex: 1,
-        backgroundColor: 'rgb(242, 242, 245)',
-        paddingTop: (Platform.OS === 'android' ? StatusBar.currentHeight : 0) + 13,
+        backgroundColor: 'rgba(242, 242, 245, 1)',
+        paddingTop: (Platform.OS === 'android' ? StatusBar.currentHeight : 0) + 10,
         paddingHorizontal: 13,
-        paddingBottom: 13
+        // paddingBottom: 13,
     },
     head: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: 30,
+        marginBottom: '7.5%', //30
     },
     userName: {
         color: COLOR_SECONDARY,
         fontSize: 21,
-        fontWeight: '600'
+        fontWeight: '700'
     },
     phrase: {
         color: COLOR_QUATERNARY,
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
 
     //section category horizontal
     sectionInfo: {
-        marginTop: 35
+        marginTop: '7%', //35
     },
     titleCatContainer: {
         flexDirection: 'row',
