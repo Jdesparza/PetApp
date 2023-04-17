@@ -43,7 +43,7 @@ const Home = ({ toggleDarkMode }) => {
 
     return (
         <View style={styles.main}>
-            <ScrollView showsVerticalScrollIndicator={false}>
+            <ScrollView showsVerticalScrollIndicator={false} style={{ paddingHorizontal: 13 }}>
                 <View style={styles.head}>
                     <View>
                         <Text style={styles.userName}>Hi Jordy Esparza</Text>

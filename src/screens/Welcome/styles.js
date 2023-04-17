@@ -88,33 +88,79 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: 10,
     },
-    btnStart: {
-        marginTop: 40,
-        backgroundColor: COLOR_PRIMARY,
-        paddingVertical: 7,
-        paddingHorizontal: 9,
-        width: '80%',
+
+    // BTN swipe
+    swipeContainer: {
+        width: 240,
         height: 70,
-        borderRadius: 50,
-        // flexDirection: 'row',
-        justifyContent: 'center',
+        padding: 7,
+        backgroundColor: COLOR_PRIMARY,
+        display: 'flex',
         alignItems: 'center',
-        position: 'relative',
+        justifyContent: 'center',
+        borderRadius: 70,
+        // overflow: 'hidden',
+        // shadowColor: "#000",
+        // shadowOffset: {
+        //     width: 0,
+        //     height: 1,
+        // },
+        // shadowOpacity: 0.18,
+        // shadowRadius: 1.00,
+        // elevation: 1,
     },
-    titleBtnStart: {
+    colorWave: {
+        position: 'absolute',
+        left: 0,
+        height: 70,
+        borderRadius: 70,
+    },
+    swipeable: {
+        height: 70 - 2 * 7,
+        width: 70 - 2 * 7,
+        borderRadius: 70 - 2 * 7,
+        backgroundColor: 'rgb(242, 242, 245)',
+        position: 'absolute',
+        left: 7,
+        zIndex: 3
+    },
+    swipeText: {
+        alignSelf: 'center',
         color: '#fff',
         fontSize: 19,
         fontWeight: '500',
-        marginLeft: 40
-    },
-    iconBtnStart: {
-        padding: 14,
-        backgroundColor: 'rgb(242, 242, 245)',
-        color: COLOR_SECONDARY,
-        borderRadius: 30,
-        position: 'absolute',
-        left: 7
+        // marginLeft: 30,
+        zIndex: 2
     }
+
+    //
+    // btnStart: {
+    //     marginTop: 40,
+    //     backgroundColor: COLOR_PRIMARY,
+    //     paddingVertical: 7,
+    //     paddingHorizontal: 9,
+    //     width: '80%',
+    //     height: 70,
+    //     borderRadius: 50,
+    //     // flexDirection: 'row',
+    //     justifyContent: 'center',
+    //     alignItems: 'center',
+    //     position: 'relative',
+    // },
+    // titleBtnStart: {
+    //     color: '#fff',
+    //     fontSize: 19,
+    //     fontWeight: '500',
+    //     marginLeft: 40
+    // },
+    // iconBtnStart: {
+    //     padding: 14,
+    //     backgroundColor: 'rgb(242, 242, 245)',
+    //     color: COLOR_SECONDARY,
+    //     borderRadius: 30,
+    //     position: 'absolute',
+    //     left: 7
+    // }
 })
 
 export default styles;
