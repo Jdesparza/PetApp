@@ -14,23 +14,12 @@ import { COLOR_PRIMARY } from '../../utils/paleta';
 
 const MAX_LINES = 2;
 
-const ProfileVeterinary = ({ toggleDarkMode, route }) => {
+const ProfileVeterinary = ({ route }) => {
 
     const { item } = route.params;
     const navigation = useNavigation();
 
     const [isFavorite, setIsFavorite] = useState(false)
-    const [showMore, setShowMore] = useState(false);
-
-    const handleToggleShowMore = () => {
-        setShowMore(!showMore);
-    };
-
-    useFocusEffect(
-        React.useCallback(() => {
-            toggleDarkMode(false);
-        }, [])
-    );
 
     const handleReturnPress = () => {
         navigation.goBack();
