@@ -12,13 +12,14 @@ const styles = StyleSheet.create({
     },
     imgBackground: {
         width: width - 26,
-        height: height / 2,
+        height: height / 2 + 20, //height / 2
         backgroundColor: COLOR_PRIMARY,
         borderRadius: 37,
         overflow: 'hidden',
         padding: 15,
         justifyContent: 'space-between',
-        marginBottom: 7.5
+        marginBottom: 7.5,
+        marginTop: 5
     },
     containerIcons: {
         flexDirection: 'row',
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
     titleInfo: {
         color: COLOR_SECONDARY,
         fontSize: 19,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
     ranking: {
         // backgroundColor: 'green',
@@ -51,20 +52,47 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     aboutVeterinarian: {
-        color: COLOR_QUATERNARY
-    },
-
-    rowContainer: {
-        flexDirection: 'row',
-    },
-    text: {
+        color: COLOR_QUATERNARY,
         fontSize: 16,
-        lineHeight: 24,
-        color: COLOR_QUATERNARY
+        letterSpacing: .2,
+        textAlign: 'justify',
+        fontWeight: '400',
     },
-    link: {
-        color: 'blue',
+    locationMap: {
+        width: '100%',
+        height: 300,
+        resizeMode: 'cover',
+        borderRadius: 25,
+        marginTop: 12
     },
+    appointmentBtnCont: {
+        backgroundColor: 'rgba(242, 242, 245, .95)',
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        height: 85,
+        width,
+        borderTopLeftRadius: 35,
+        borderTopRightRadius: 35,
+        paddingVertical: 10,
+        paddingHorizontal: 22,
+        // elevation: 5
+    },
+    appointmentBtnTouchCont: {
+        backgroundColor: COLOR_PRIMARY,
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20
+    },
+    appointmentBtnTextCont: {
+        color: 'white',
+        fontSize: 18,
+        fontWeight: '500',
+        letterSpacing: .5
+    }
 })
 
 export default styles;

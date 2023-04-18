@@ -8,6 +8,9 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import Fontisto from 'react-native-vector-icons/Fontisto'
 import CardVeterinarian from '../../components/CardVeterinarian';
 
+import ReadMore from '@fawazahmed/react-native-read-more';
+import { COLOR_PRIMARY } from '../../utils/paleta';
+
 
 const MAX_LINES = 2;
 
@@ -35,7 +38,7 @@ const ProfileVeterinary = ({ toggleDarkMode, route }) => {
 
     return (
         <View style={styles.main}>
-            <ScrollView style={{ paddingHorizontal: 13, flex: 1 }}>
+            <ScrollView showsVerticalScrollIndicator={false} style={{ paddingHorizontal: 13, flex: 1 }}>
                 <ImageBackground source={item.imageUri} resizeMode='cover' style={styles.imgBackground}>
                     <View style={styles.containerIcons}>
                         <TouchableOpacity style={styles.vectorIconBackCont} onPress={handleReturnPress}>
@@ -47,7 +50,7 @@ const ProfileVeterinary = ({ toggleDarkMode, route }) => {
                     </View>
                     <CardVeterinarian {...item} />
                 </ImageBackground>
-                <View style={{ marginVertical: 7.5, paddingHorizontal: 15 }}>
+                <View style={{ marginTop: 11, paddingHorizontal: 11 }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                         <Text style={styles.titleInfo}>About Veterinarian</Text>
                         {item.ranking > 0 &&
@@ -57,21 +60,31 @@ const ProfileVeterinary = ({ toggleDarkMode, route }) => {
                             </View>
                         }
                     </View>
-                    <View style={{ marginVertical: 10 }}>
-                        <Text
-                            numberOfLines={showMore ? undefined : MAX_LINES}
-                            style={styles.text}
+                    <View style={{ marginTop: 12 }}>
+                        <ReadMore
+                            numberOfLines={2}
+                            seeMoreText='see more'
+                            seeMoreStyle={{ color: COLOR_PRIMARY, fontWeight: '500' }}
+                            seeLessText='see less'
+                            seeLessStyle={{ color: COLOR_PRIMARY, fontWeight: '500' }}
+                            style={styles.aboutVeterinarian}
                         >
                             {item.aboutVeterinarian}
-                            {item.aboutVeterinarian.split('\n').length < MAX_LINES && (
-                                <Text style={styles.link} onPress={handleToggleShowMore}>
-                                    {showMore ? 'Ver menos' : 'Ver más'}
-                                </Text>
-                            )}
-                        </Text>
+                        </ReadMore>
+
                     </View>
                 </View>
+                <View style={{ marginTop: 11, paddingHorizontal: 11 }} >
+                    <Text style={styles.titleInfo}>Location</Text>
+                    <Image source={require('../../assets/img/map-location.png')} style={styles.locationMap} />
+                </View>
+                <View style={{ paddingTop: 95 }} />
             </ScrollView>
+            <View style={styles.appointmentBtnCont}>
+                <TouchableOpacity style={styles.appointmentBtnTouchCont}>
+                    <Text style={styles.appointmentBtnTextCont}>Make on Appointment</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     )
 }

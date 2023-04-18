@@ -8,11 +8,9 @@ const styles = StyleSheet.create({
         // flex: 1,
         backgroundColor: 'white',
         // marginHorizontal: 10,
-        paddingTop: 19,
-        paddingBottom: 14,
-        paddingHorizontal: 17,
+        padding: 17,
         borderRadius: 33,
-        height: 135,
+        height: 130, //135
         justifyContent: 'space-between'
     },
     name: {
