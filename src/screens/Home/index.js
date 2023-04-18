@@ -5,6 +5,7 @@ import { COLOR_PRIMARY, COLOR_QUATERNARY, COLOR_SECONDARY, COLOR_TERTIARY } from
 import styles from './styles'
 import CardAd from '../../components/CardAd';
 import CardVeterinaryNearby from '../../components/CardVeterinaryNearby';
+import veterinaryPerson from '../../data/veterinaryPerson';
 
 const Home = ({ toggleDarkMode }) => {
 
@@ -43,7 +44,7 @@ const Home = ({ toggleDarkMode }) => {
 
     return (
         <View style={styles.main}>
-            <ScrollView showsVerticalScrollIndicator={false} style={{ paddingHorizontal: 13 }}>
+            <ScrollView showsVerticalScrollIndicator={false} style={{ paddingHorizontal: 13, paddingTop: 5 }} >
                 <View style={styles.head}>
                     <View>
                         <Text style={styles.userName}>Hi Jordy Esparza</Text>
@@ -77,13 +78,20 @@ const Home = ({ toggleDarkMode }) => {
                         ItemSeparatorComponent={() => <View style={{ padding: 15.5 }}></View>}
                     />
                 </View>
+
                 <View style={styles.sectionInfo}>
                     <View style={styles.titleCatContainer}>
                         <Text style={styles.titleCategory}>Nearby Veterinary</Text>
                         <Text style={styles.seeAll}>See all</Text>
                     </View>
-                    <CardVeterinaryNearby />
+
+                    {veterinaryPerson.slice(0, 2).map((item, index) => (
+                        <CardVeterinaryNearby key={index} {...item} />
+                    ))}
                 </View>
+
+                <View style={{ paddingTop: 25 }} />
+
             </ScrollView>
         </View>
     )

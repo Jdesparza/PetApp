@@ -1,4 +1,4 @@
-import { View, Text, Image, ImageBackground, TouchableOpacity, Animated as ReactNativeAnimated, Easing } from 'react-native'
+import { View, Text, Animated as ReactNativeAnimated, Easing, Image } from 'react-native'
 import React, { useRef, useEffect, useState } from 'react'
 import styles from './styles';
 import { COLOR_PRIMARY, COLOR_TERTIARY } from '../../utils/paleta';
@@ -6,7 +6,7 @@ import { useNavigation, useFocusEffect } from '@react-navigation/native'
 
 import Feather from 'react-native-vector-icons/Feather'
 import { PanGestureHandler } from 'react-native-gesture-handler';
-import Animated, { Extrapolate, interpolate, interpolateColor, runOnJS, useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
+import Animated, { Extrapolate, interpolate, interpolateColor, runOnJS, useAnimatedGestureHandler, useAnimatedStyle, useSharedValue, withSpring, } from 'react-native-reanimated';
 
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -20,6 +20,8 @@ const SWIPEABLE_DIMENSIONS = BUTTOM_HEIGHT - 2 * BUTTOM_PADDING
 const H_WAVE_RANGE = SWIPEABLE_DIMENSIONS + 2 * BUTTOM_PADDING
 const H_SWIPE_RANGE = BUTTOM_WIDTH - 2 * BUTTOM_PADDING - SWIPEABLE_DIMENSIONS
 
+const AnimatedFeather = Animated.createAnimatedComponent(Feather);
+
 const Welcome = ({ toggleDarkMode }) => {
 
     const navigation = useNavigation()
@@ -30,7 +32,8 @@ const Welcome = ({ toggleDarkMode }) => {
     const gestureTranslationX = useSharedValue(0);
 
     const fadeAnimText = useRef(new ReactNativeAnimated.Value(0)).current;
-    const fadeAnimImg = useRef(new ReactNativeAnimated.Value(0)).current;
+    const fadeAnimImgPaws = useRef(new ReactNativeAnimated.Value(0)).current;
+    const fadeAnimImgIt = useRef(new ReactNativeAnimated.Value(0)).current;
 
     useFocusEffect(
         React.useCallback(() => {
@@ -40,10 +43,13 @@ const Welcome = ({ toggleDarkMode }) => {
     );
 
     const resetAnimations = () => {
-        fadeAnimText.setValue(0)
-        fadeAnimImg.setValue(0)
-        gestureTranslationX.value = 0
-        // console.log('reset')
+        setTimeout(() => {
+            fadeAnimText.setValue(0)
+            fadeAnimImgPaws.setValue(0)
+            fadeAnimImgIt.setValue(0)
+            gestureTranslationX.value = 0
+            // console.log('reset')
+        }, 500);
     }
 
     React.useEffect(() => {
@@ -52,10 +58,6 @@ const Welcome = ({ toggleDarkMode }) => {
                 navigation.navigate('HomeBottomTabNavigator')
                 resetAnimations()
                 setToggled(false)
-
-                // return () => {
-                //     clearTimeout(animationTimeout);
-                //   };
             }, timingAnim);
 
             return () => {
@@ -67,17 +69,27 @@ const Welcome = ({ toggleDarkMode }) => {
     const startAnimations = () => {
         ReactNativeAnimated.timing(fadeAnimText, {
             toValue: 1,
-            duration: 1200,
+            duration: 1000,
             easing: Easing.circle,
             useNativeDriver: true, // <-- Set this to true
         }).start();
 
-        ReactNativeAnimated.timing(fadeAnimImg, {
+        ReactNativeAnimated.timing(fadeAnimImgIt, {
             toValue: 1,
             duration: 1000,
             easing: Easing.linear,
             useNativeDriver: true, // <-- Set this to true
         }).start();
+
+        setTimeout(() => {
+            ReactNativeAnimated.timing(fadeAnimImgPaws, {
+                toValue: 1,
+                duration: 1000,
+                easing: Easing.linear,
+                useNativeDriver: true, // <-- Set this to true
+            }).start();
+            // console.log('anim paws')
+        }, 1200);
     };
 
     const transformText = {
@@ -85,13 +97,13 @@ const Welcome = ({ toggleDarkMode }) => {
             {
                 translateX: fadeAnimText.interpolate({
                     inputRange: [0, 1],
-                    outputRange: [-90, 10]
+                    outputRange: [-190, 0]
                 })
             },
             {
                 translateY: fadeAnimText.interpolate({
                     inputRange: [0, 1],
-                    outputRange: [-60, 2]
+                    outputRange: [-50, 2]
                 })
             },
             {
@@ -103,21 +115,28 @@ const Welcome = ({ toggleDarkMode }) => {
         ]
     };
 
-    const transformImg = {
+    const transformImgIt = {
         transform: [
             {
-                translateX: fadeAnimImg.interpolate({
+                translateX: fadeAnimImgIt.interpolate({
                     inputRange: [0, 1],
                     outputRange: [0, -28]
                 })
             },
             {
-                translateY: fadeAnimImg.interpolate({
+                translateY: fadeAnimImgIt.interpolate({
                     inputRange: [0, 1],
                     outputRange: [30, 0]
                 })
             },
         ]
+    };
+
+    const transformImgPaws = {
+        opacity: fadeAnimImgPaws.interpolate({
+            inputRange: [0, 1],
+            outputRange: [0, 1]
+        })
     };
 
     const animatedGestureHandler = useAnimatedGestureHandler({
@@ -193,6 +212,15 @@ const Welcome = ({ toggleDarkMode }) => {
                 width: H_WAVE_RANGE + gestureTranslationX.value,
                 opacity: interpolate(gestureTranslationX.value, interpolateGestureXInput, [0, 1])
             }
+        }),
+        iconSwipe: useAnimatedStyle(() => {
+            return {
+                color: interpolateColor(
+                    gestureTranslationX.value,
+                    [0, BUTTOM_WIDTH - SWIPEABLE_DIMENSIONS - BUTTOM_PADDING],
+                    [COLOR_PRIMARY, '#fff']
+                )
+            }
         })
     }
 
@@ -200,7 +228,8 @@ const Welcome = ({ toggleDarkMode }) => {
         <View style={styles.main}>
             <View style={styles.head}>
                 <ReactNativeAnimated.Text style={[styles.title, transformText]}>Homey {'\n'}Pet</ReactNativeAnimated.Text>
-                <ReactNativeAnimated.Image source={require('../../assets/img/cat.png')} style={[styles.img, transformImg]} />
+                <ReactNativeAnimated.Image source={require('../../assets/icon/paws.png')} style={[styles.imgPaws, transformImgPaws]} />
+                <ReactNativeAnimated.Image source={require('../../assets/img/cat.png')} style={[styles.imgIt, transformImgIt]} />
             </View>
             <View style={[styles.description, styles.shadow(13)]}>
                 <View style={styles.oval} />
@@ -220,18 +249,12 @@ const Welcome = ({ toggleDarkMode }) => {
                         />
                         <PanGestureHandler onGestureEvent={animatedGestureHandler}>
                             <Animated.View style={[styles.swipeable, AnimatedStylesGesture.swipeable]}>
-
+                                <AnimatedFeather name='chevron-right' size={30} style={AnimatedStylesGesture.iconSwipe} />
                             </Animated.View>
                         </PanGestureHandler>
                         <Animated.Text style={[styles.swipeText, AnimatedStylesGesture.swipeText]}>Get Started</Animated.Text>
                     </View>
                 </View>
-
-
-                {/* <TouchableOpacity style={styles.btnStart} onPress={() => navigation.navigate('HomeBottomTabNavigator')}>
-                    <Feather name='chevron-right' size={30} style={styles.iconBtnStart} />
-                    <Text style={styles.titleBtnStart}>Get Started</Text>
-                </TouchableOpacity> */}
             </View>
         </View>
     )

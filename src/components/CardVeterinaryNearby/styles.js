@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         height: 120,
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginVertical: 7.5
         // position: 'relative'
     },
 
@@ -30,6 +31,22 @@ const styles = StyleSheet.create({
         height: '100%',
 
         // resizeMode: 'cover'
+    },
+    ranking: {
+        // backgroundColor: 'green',
+        position: 'absolute',
+        bottom: 3,
+        left: 15,
+        right: 15,
+        flexDirection: 'row',
+        // justifyContent: 'center',
+        alignItems: 'center'
+    },
+    rankingText: {
+        fontSize: 12.5,
+        fontWeight: 'bold',
+        paddingLeft: 4,
+        color: 'white'
     },
     containerInfo: {
         justifyContent: 'space-between',

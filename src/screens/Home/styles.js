@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     main: {
         flex: 1,
         backgroundColor: 'rgba(242, 242, 245, 1)',
-        paddingTop: (Platform.OS === 'android' ? StatusBar.currentHeight : 0) + 10,
+        paddingTop: (Platform.OS === 'android' ? StatusBar.currentHeight : 0), //+10
         // paddingBottom: 13,
     },
     head: {
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'flex-end',
         justifyContent: 'space-between',
-        marginBottom: 15
+        marginBottom: 7.5 // 15
     },
     titleCategory: {
         fontSize: 18,

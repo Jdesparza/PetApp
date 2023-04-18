@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Welcome from '../screens/Welcome'
 import HomeBottomTabNavigator from './homeBottomTabNavigator';
+import ProfileVeterinary from '../screens/ProfileVeterinary';
 
 const Stack = createStackNavigator()
 
@@ -20,6 +21,9 @@ const RootNavigation = ({ toggleDarkMode }) => {
                 </Stack.Screen>
                 <Stack.Screen name='HomeBottomTabNavigator'>
                     {props => <HomeBottomTabNavigator {...props} toggleDarkMode={toggleDarkMode} />}
+                </Stack.Screen>
+                <Stack.Screen name='ProfileVeterinary'>
+                    {props => <ProfileVeterinary {...props} toggleDarkMode={toggleDarkMode} />}
                 </Stack.Screen>
             </Stack.Navigator>
         </NavigationContainer>

@@ -32,9 +32,20 @@ const styles = StyleSheet.create({
         fontSize: 38,
         fontWeight: 'bold',
         color: 'white',
-        position: 'absolute'
+        // position: 'absolute',
     },
-    img: {
+    imgPaws: {
+        width: 47,
+        height: 47,
+        position: 'absolute',
+        tintColor: 'rgba(240, 240, 240, .45)',
+        top: 53,
+        left: 75,
+        transform: [{
+            rotate: '20deg'
+        }]
+    },
+    imgIt: {
         position: 'absolute',
         // top: -120,
         // left: -28,
@@ -122,7 +133,9 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgb(242, 242, 245)',
         position: 'absolute',
         left: 7,
-        zIndex: 3
+        zIndex: 3,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     swipeText: {
         alignSelf: 'center',
@@ -131,7 +144,7 @@ const styles = StyleSheet.create({
         fontWeight: '500',
         // marginLeft: 30,
         zIndex: 2
-    }
+    },
 
     //
     // btnStart: {
