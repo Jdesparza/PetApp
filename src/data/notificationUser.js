@@ -3,7 +3,7 @@ export default [
         "id": 0,
         "title": 'Hora del paseo',
         "message": 'Es hora de sacar a tu mascota a dar un paseo y estirar las patas.',
-        "imageUri": require('../assets/img/notificationImg/mascota-paseo.jpg')
+        "imageUri": require('../assets/img/notificationImg/mascota-entrenar.jpg')
     },
     {
         "id": 1,

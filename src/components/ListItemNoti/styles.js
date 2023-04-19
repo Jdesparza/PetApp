@@ -7,15 +7,12 @@ const styles = StyleSheet.create({
     main: {
         width: '100%',
         alignItems: 'center',
-        marginVertical: 10,
+        // marginVertical: 5,
     },
     noti: {
         backgroundColor: 'white', //rgba(242, 242, 245, 1),
         width: '90%',
         height: 70,
-        justifyContent: 'center',
-        paddingHorizontal: 20,
-        paddingVertical: 15,
         shadowOpacity: 1,
         shadowOffset: {
             width: 0,
@@ -23,7 +20,21 @@ const styles = StyleSheet.create({
         },
         shadowRadius: 10,
         elevation: 3,
-        borderRadius: 15
+        borderRadius: 15,
+        flexDirection: 'row',
+        overflow: 'hidden'
+    },
+    uri: {
+        height: 70,
+        width: '25%',
+    },
+    contInfo: {
+        width: '75%',
+        paddingLeft: 10,
+        paddingRight: 20,
+        justifyContent: 'space-between',
+        paddingBottom: 15,
+        paddingTop: 5
     },
     title: {
         color: COLOR_PRIMARY,
@@ -45,8 +56,6 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
         paddingHorizontal: '7%'
     },
-    iconBtn: {
-    }
 })
 
 export default styles

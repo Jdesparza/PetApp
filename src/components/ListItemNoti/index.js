@@ -1,4 +1,4 @@
-import { View, Text, Dimensions, ToastAndroid, Alert } from 'react-native'
+import { View, Text, Dimensions, ToastAndroid, Alert, Image } from 'react-native'
 import React from 'react'
 import styles from './styles'
 import { PanGestureHandler, PanGestureHandlerGestureEvent } from 'react-native-gesture-handler'
@@ -12,14 +12,14 @@ import { Extrapolate } from 'react-native-reanimated'
 
 const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient)
 
-const ListItemNoti = ({ title, message, simultaneousHandlers }) => {
-    // console.log(title, simultaneousHandlers)
+const ListItemNoti = (noti) => {
+    // console.log(simultaneousHandlers)
 
     const translateX = useSharedValue(0)
     const { width: SCREEN_WIDTH } = Dimensions.get('window')
     const Translate_X_Threshold = -SCREEN_WIDTH * .2
     const itemHeight = useSharedValue(70)
-    const marginVertical = useSharedValue(10)
+    const marginVertical = useSharedValue(5)
 
     const showToast = () => {
         ToastAndroid.show(`🔔 ${noti.title.toLowerCase()}, eliminada...`, ToastAndroid.SHORT);
@@ -121,12 +121,15 @@ const ListItemNoti = ({ title, message, simultaneousHandlers }) => {
                 end={{ x: .7, y: 0.5 }}
                 style={[styles.btnContainer, reanimatedIconStyle, reanimatedNotiStyle.reanimatedIconNoti]}
             >
-                <MaterialCommunityIcons name='delete' size={70 * 0.4} color={'red'} style={styles.iconBtn} />
+                <MaterialCommunityIcons name='delete' size={70 * 0.4} color={'red'} />
             </AnimatedLinearGradient>
-            <PanGestureHandler simultaneousHandlers={simultaneousHandlers} onGestureEvent={panGesture}>
+            <PanGestureHandler activeOffsetX={[-10, 10]} onGestureEvent={panGesture}>
                 <Animated.View style={[styles.noti, reanimatedStyle]}>
-                    <Text style={styles.title}>{title}</Text>
-                    <Text numberOfLines={1} style={styles.message}>{message}</Text>
+                    <Image source={noti.imageUri} style={styles.uri} />
+                    <View style={styles.contInfo}>
+                        <Text style={styles.title}>{noti.title}</Text>
+                        <Text numberOfLines={1} style={styles.message}>{noti.message}</Text>
+                    </View>
                 </Animated.View>
             </PanGestureHandler>
         </Animated.View>

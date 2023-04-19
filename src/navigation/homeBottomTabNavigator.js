@@ -83,7 +83,7 @@ const HomeBottomTabNavigator = ({ toggleDarkMode }) => {
                     )
                 }}
             />
-            <Tab.Screen name={'Notification'} component={Notification}
+            <Tab.Screen name={'Notification'}
                 options={{
                     tabBarIcon: ({ color }) => (
                         <View style={styles.viewIcon}>
@@ -92,7 +92,9 @@ const HomeBottomTabNavigator = ({ toggleDarkMode }) => {
                         </View>
                     )
                 }}
-            />
+            >
+                {props => <Notification {...props} toggleDarkMode={toggleDarkMode} />}
+            </Tab.Screen>
             <Tab.Screen name={'Profile'} component={Profile}
                 options={{
                     tabBarIcon: ({ color }) => (
