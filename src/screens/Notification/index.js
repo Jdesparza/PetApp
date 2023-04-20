@@ -48,16 +48,15 @@ const Notification = ({ toggleDarkMode }) => {
                 }
             };
 
-
-            if (contCarouselIndex <= carousel.length - 1) {
-                setTimeout(() => {
+            setTimeout(() => {
+                if (contCarouselIndex <= carousel.length - 1) {
                     scrollToNextItem()
                     setContCarouselIndex((contCarouselIndex) => contCarouselIndex + 1)
                     // console.log(contCarouselIndex)
-                }, 3000);
-            } else {
-                setContCarouselIndex(0)
-            }
+                } else {
+                    setContCarouselIndex(0)
+                }
+            }, 4000);
         }, [contCarouselIndex])
     );
 
@@ -137,7 +136,7 @@ const Notification = ({ toggleDarkMode }) => {
                         )
                     }}
                     // scrollEventThrottle={1}
-                    scrollEnabled={true}
+                    scrollEnabled={false}
                 // onScrollBeginDrag={handleScrollBegin}
                 // onScrollEndDrag={handleScrollEnd}
                 />
